@@ -11,13 +11,13 @@ from classes import User
 
 @application.before_request
 def before_request():
-	print("before_request called")
 	g.user = current_user
 
 
 @application.route('/login', methods = ['GET', 'POST'])
 def login():
-	if g.user is not None and g.user.is_authenticated:
+	print(current_user)
+	if current_user is not None and current_user[0]:
 		return redirect('/')
 	
 	form = LoginForm()
@@ -25,8 +25,11 @@ def login():
 	if form.validate_on_submit():
 		user = User.authenticate(form.username.data, form.password.data)
 		if user is not None:
-			g.user = user
-		return redirect('/')
+			login_user(user)
+			flask.flash(u'Авторизация успешна')
+			return redirect('/')
+		else:
+			return render_template('auth/login-page.htt', title = u'Авторизация', form = form)
 	else:
 		return render_template('auth/login-page.htt', title = u'Авторизация', form = form)
 
