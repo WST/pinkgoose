@@ -13,8 +13,14 @@ class User(UserMixin):
 		self.uid = _uid
 		self.username = _username
 
+	def __unicode__(self):
+		return self.username
+
 	def get_id(self):
 		return unicode(self.uid)
+
+	def get_absolute_url(self):
+		return "/users/%d" % self.uid
 
 	@staticmethod
 	def authenticate(username, password):
@@ -31,7 +37,9 @@ class User(UserMixin):
 	def get(user_id):
 		cur = db.connection.cursor()
 		cur.execute("SELECT id, username FROM users WHERE id = %s", (int(user_id),))
-		return cur.fetchone()
+		row = cur.fetchone()
+		user = User(int(row[0]), row[1])
+		return user
 
 @login_manager.user_loader
 def load_user(user_id):

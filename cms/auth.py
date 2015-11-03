@@ -16,8 +16,7 @@ def before_request():
 
 @application.route('/login', methods = ['GET', 'POST'])
 def login():
-	print(current_user)
-	if current_user is not None and current_user[0]:
+	if g.user is not None and g.user.is_authenticated:
 		return redirect('/')
 	
 	form = LoginForm()
@@ -26,7 +25,6 @@ def login():
 		user = User.authenticate(form.username.data, form.password.data)
 		if user is not None:
 			login_user(user)
-			flask.flash(u'Авторизация успешна')
 			return redirect('/')
 		else:
 			return render_template('auth/login-page.htt', title = u'Авторизация', form = form)
@@ -34,3 +32,9 @@ def login():
 		return render_template('auth/login-page.htt', title = u'Авторизация', form = form)
 
 login_manager.login_view = 'login'
+
+@application.route("/logout")
+@login_required
+def logout():
+	logout_user()
+	return redirect('/')
