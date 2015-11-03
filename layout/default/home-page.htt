@@ -1,0 +1,5 @@
+{% extends 'abstract/page.htt' %}
+
+{% block body %}
+	<div>{{ content }}</div>
+{% endblock %}

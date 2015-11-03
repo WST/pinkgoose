@@ -1,11 +1,7 @@
-import bottle
-from bottle import route, run, template
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-@route('/')
-def index():
-    return template('<b>Hello {{name}}</b>!', name = 'foo')
+from cms import application
 
-if __name__ == '__main__':
-	run(host = 'localhost', port = 8080)
-else:
-	application = bottle.default_app()
+if __name__ == "__main__":
+	application.run()
