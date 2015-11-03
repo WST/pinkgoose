@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Тестовое приложение</title>
+	</head>
+	<body>
+		<h1>{{ title }}</h1>
+		{% block body %}
+			<div>{{ content }}</div>
+		{% endblock %}
+	</body>
+</html>

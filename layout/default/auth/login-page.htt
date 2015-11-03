@@ -1,0 +1,13 @@
+{% extends 'abstract/simple-page.htt' %}
+
+{% block body %}
+	<form action="/login" method="post">
+		{{ form.hidden_tag() }}
+		{% for field in form if field.widget.input_type != 'hidden' %}
+			{{ field.label }}
+			{{ field }}
+		{% endfor %}
+		<p><input type="submit" value="Sign In"></p>
+	</form>
+{% endblock %}
+

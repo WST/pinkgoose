@@ -5,6 +5,7 @@ from cms import application as app, db
 
 # Flask
 from flask import render_template
+from flask.ext.login import login_required
 
 @app.route('/')
 def home_page():
