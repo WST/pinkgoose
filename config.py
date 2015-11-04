@@ -12,6 +12,7 @@ PG_PASSWORD = ''
 PG_DATABASE = 'sometesting'
 
 # Основные настройки сайта
+LAYOUT = u'default'
 SITE_TITLE = u'averkov.web.id'
 SITE_SLOGAN = u'Жизнь, веб, XMPP, TAS, электронные самоделки'
 

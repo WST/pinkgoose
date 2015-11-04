@@ -17,9 +17,11 @@ import psycopg2.extras
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+from config import LAYOUT
+
 # Некоторые пути
 CMS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_ROOT = os.path.join(CMS_ROOT, 'layout/default')
+TEMPLATE_ROOT = os.path.join(CMS_ROOT, 'layout/' + LAYOUT)
 STATIC_ROOT = os.path.join(CMS_ROOT, 'static')
 
 # Создаём приложение и загружаем конфиг
