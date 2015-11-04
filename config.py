@@ -30,6 +30,8 @@ FOOTER_MESSAGES = [
 
 # Поняшки :3
 PONIES = [
-	'<div style="position: relative; top: -7px; left: 700px; width: 200px; height: 233px; background-image: url(\'http://averkov.web.id/images/applebloom_element.png\');" id="pony"></div>',
-	'<div style="position: relative; top: -2px; left: 800px; width: 164px; height: 200px; background-image: url(\'http://averkov.web.id/images/really_cute_apple_bloom_by_kuren247-d6kdnrh.png\');" id="pony"></div>'
+	'<div style="position: relative; top: -7px; left: 700px; width: 200px; height: 233px; background-image: url(\'/static/ponies/applebloom-1.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -2px; left: 800px; width: 164px; height: 200px; background-image: url(\'/static/ponies/applebloom-2.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -32px; left: 600px; width: 293px; height: 230px; background-image: url(\'/static/ponies/pinkie-1.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -32px; left: 700px; width: 208px; height: 230px; background-image: url(\'/static/ponies/twilight-1.png\');" id="pony"></div>',
 ]
