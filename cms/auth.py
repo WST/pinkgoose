@@ -13,7 +13,6 @@ from classes import User
 def before_request():
 	g.user = current_user
 
-
 @application.route('/login', methods = ['GET', 'POST'])
 def login():
 	if g.user is not None and g.user.is_authenticated:

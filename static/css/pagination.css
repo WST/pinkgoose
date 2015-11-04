@@ -1,0 +1,33 @@
+
+ul.pagination {
+	display: block;
+	text-align: center;
+}
+
+ul.pagination li {
+	display: inline;
+}
+
+ul.pagination li a {
+	text-decoration: none;
+	padding: 6px;
+	color: #555;
+}
+
+ul.pagination li a:hover {
+	text-decoration: none;
+	padding: 6px;
+	color: #555;
+	background-color: #eee;
+}
+
+ul.pagination li.disabled a {
+	color: #999 !important;
+	text-decoration: none;
+}
+
+ul.pagination li.active a {
+	color: #fff !important;
+	background-color: #000;
+	text-decoration: none;
+}

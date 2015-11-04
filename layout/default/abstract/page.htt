@@ -1,48 +1,78 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>{{ title }}</title>
-	<link rel="stylesheet" type="text/css" href="http://ystc.ru/style/OxygenB.css" />
-</head>
+<html>
+	<head>
+		{% block head %}
+			<title>Илья Аверков · Жизнь, веб, XMPP, TAS, электронные самоделки</title>
+			<meta name="keywords" content="Майкоп,Красногвардейское,Николаевское,Адыгея,Jabber,XMPP,PHP,Apache,MySQL,SQLite,Python,Django,Indonesia,Jakarta,Yogyakarta,Индонезия,Джакарта,Gallerizer">
+			<meta name="description" content="Блог Ильи Аверкова — веб-разработка, Jabber/XMPP, скоростное прохождение игр, создание сайтов, хостинг, Майкоп, Красногвардейское, Адыгея">
+		{% endblock %}
 
-<body>
-	<div id="punindex" class="pun">
-		<div class="top-box"><div><!-- Top Corners --></div></div>
-			<div class="punwrap">
-				<div id="brdheader" class="block">
-					<div class="box">
-						<div style="position: absolute; top: 8px; right: 64px; width: 230px; height: 80px; background-image: url('/img/ystc.png'); background-repeat: no-repeat;"></div>
-						<div id="brdtitle" class="inbox">
-							<h1><a href="/">Тестовый сайт</a></h1>
-							<div id="brddesc"><span>Тестовое веб-приложение на Flask, PostgreSQL и uWSGI</span></div>
-						</div>
-						<div id="brdmenu" class="inbox">
-							<ul>
-								<li id="navindex" class="isactive"><a href="/">Главная</a></li>
-								{% if current_user.is_authenticated %}
-									<li><a href="/logout">Выйти</a></li>
-								{% else %}
-									<li><a href="/login">Войти</a></li>
-								{% endif %}
-							</ul>
-						</div>
-						<div id="brdwelcome" class="inbox">
-							{% if current_user.is_authenticated %}
-								<p class="conl">Вы вошли как <a href="{{ current_user.get_absolute_url }}">{{ current_user }}</a>. <a href="/logout">Выйти</a>?</p>
-							{% else %}
-								<p class="conl">Не авторизован</p>
-							{% endif %}
-							<div class="clearer"></div>
-						</div>
-					</div>
+		<link rel="alternate" type="application/rss+xml" title="averkov.web.id &raquo; Feed" href="/feed/" />
+		
+		<meta property="og:type" content="blog" />
+		<meta property="og:title" content="averkov.web.id" />
+		<meta property="og:description" content="Жизнь, веб, XMPP, TAS, DIY" />
+		<meta property="og:url" content="http://averkov.web.id/" />
+		<meta property="og:site_name" content="averkov.web.id" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="google-site-verification" content="WRUEK5ciSwbZaukiHkIs4fKQ2KhUq7XVoFviyLtgRK4" />
+
+		<link rel="stylesheet" type="text/css" href="/static/css/global.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/menu.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/pagination.css" />
+		<style>
+			#instantclick {
+				display: none;
+			}
+		</style>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.js"></script>
+	</head>
+	<body>
+		<div id="main-container">
+			<header>
+				<div id="site-title"><a href="/">{{ site_title }}</a></div>
+				<div id="site-subtitle">{{ site_slogan }}</div>
+				<div class="clear-both"></div>
+
+				<div id="header-image">
+					{% block pony %}
+						{% autoescape off %}
+							{{ pony }}
+						{% endautoescape %}
+					{% endblock %}
 				</div>
+
+				{% include 'abstract/menu.htt' %}
+			</header>
+
+			<div id="body-container">
+				{% block body %}
+					<div id="article-container">
+						<article>
+							{% block article %}
+								<h1>Тестовый заголовок</h1>
+							{% endblock %}
+						</article>
+					</div>
+				{% endblock %}
+			
 			</div>
 
-			{% block body %}{% endblock %}
-			
-			<div class="end-box"><div><!-- Bottom corners --></div>
+			<div id="sidebar-container">
+				{% for block in blocks %}
+					{% include 'abstract/sidebar-block.htt' %}
+				{% endfor %}
+			</div>
+
+				<div class="clear-both"></div>
+
+			{% include 'abstract/footer.htt' %}
 		</div>
-	</div>
-</body>
+
+		{% block appendix %}
+		{% endblock %}
+	</body>
 </html>

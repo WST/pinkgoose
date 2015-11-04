@@ -1,0 +1,13 @@
+<menu>
+	<ul>
+		<li><a href="/">Блог</a></li>
+	</ul>
+	<ul id="rightmenu">
+		{% if current_user.is_authenticated %}
+			<li><a href="{{ hosting_url }}">Панель</a></li>
+			<li><a href="/logout">Выйти ({{ user }})</a></li>
+		{% else %}
+			<li><a href="/login" class="invisible">Войти</a></li>
+		{% endif %}
+	</ul>
+</menu>

@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 
 # Наше приложение
-from cms import application as app, db, db_cursor
+from cms import application, db, db_cursor
 
 # Flask
-from flask import render_template
+from flask import render_template, current_app
 from flask.ext.login import login_required
 
-@app.route('/')
+# Python
+import random
+
+@application.route('/')
 def home_page():
 	cur = db_cursor()
 	cur.execute("SELECT * FROM posts ORDER BY published_at DESC")

@@ -20,9 +20,10 @@ sys.setdefaultencoding('utf-8')
 # Некоторые пути
 CMS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_ROOT = os.path.join(CMS_ROOT, 'layout/default')
+STATIC_ROOT = os.path.join(CMS_ROOT, 'static')
 
 # Создаём приложение и загружаем конфиг
-application = Flask(__name__, template_folder = TEMPLATE_ROOT)
+application = Flask(__name__, template_folder = TEMPLATE_ROOT, static_folder = STATIC_ROOT)
 application.config.from_object('config')
 
 # Подключение к СУБД PostgreSQL
@@ -34,6 +35,8 @@ def db_cursor():
 # Менеджер авторизаций
 login_manager = LoginManager()
 login_manager.init_app(application)
+
+from cms import templating
 
 # Импортируем класс пользователя и другие
 from cms import classes

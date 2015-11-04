@@ -1,0 +1,266 @@
+body {
+	background-color: #131313;
+	background-image: url('/static/img/background.png');
+}
+
+::selection {
+	background-color: rgba(10, 17, 167, .9);
+	color: #fff;
+}
+
+#instantclick {
+  display: none;
+}
+
+body,td,th,div,p,blockquote {
+	font-family: "Georgia", "Bitstream Charter", serif;
+	font-size: 16px;
+	line-height: 24px;
+	color: #333;
+}
+
+/* Ссылки */
+a:link { color: #0066cc; }
+a:visited { color: #743399; }
+a:active, a:hover { color: #ff4b33; }
+
+a.hint {
+	cursor: help;
+	border-bottom: 1px dotted #333;
+	color: #333;
+}
+
+#main-container {
+	width: 940px;
+	background-color: #fff;
+	margin: 0px auto;
+	padding: 32px 16px 16px 16px;
+}
+
+#site-title {
+	float: left;
+	font-family: "Verdana", "DejaVu Sans", "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	font-size: 21px;
+	color: #000;
+}
+
+#site-title a {
+	color: #000;
+	text-decoration: none;
+}
+
+#site-subtitle {
+	float: right;
+	font-family: Georgia, "Bitstream Charter", serif;
+	font-size: 12px;
+	color: #555;
+	font-style: italic;
+	margin-top: 4px;
+	text-align: right;
+}
+
+.clear-both {
+	clear: both;
+}
+
+#body-container {
+	padding: 16px;
+}
+
+footer {
+	border-top: 4px solid #000;
+	padding-top: 16px;
+}
+
+#footer-title {
+	float: left;
+	font-weight: bold;
+	font-family: "Verdana", "Helvetica Neue", "Arial", "Helvetica", "Nimbus Sans L", sans-serif;
+	font-size: 12px;
+	vertical-align: baseline;
+}
+
+#footer-subtitle {
+	float: right;
+	color: #666;
+	vertical-align: baseline;
+	font-style: italic;
+	font-size: 12px;
+	font-family: "Georgia", "Bitstream Charter", serif;
+}
+
+#header-image {
+	margin-top: 24px;
+	border-top: 4px solid #000;
+	height: 198px;
+	background-image: url('http://averkov.web.id/wp-content/uploads/2011/11/header-img.jpg');
+	/*border-top-left-radius: 10px;
+	border-top-right-radius: 10px;*/
+}
+
+#article-container {
+	float: left;
+	width: 640px;
+	padding-bottom: 48px;
+}
+
+#sidebar-container {
+	width: 220px;
+	float: right;
+}
+
+/* blog */
+.blog-entry {
+	margin-bottom: 48px;
+}
+
+.entry-meta {
+	color: #888;
+	font-size: 12px;
+	font-family: "Verdana", "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+}
+
+h1.entry-title {
+	font-family: "Verdana", "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+}
+
+h2.entry-title {
+	margin-bottom: 0px;
+	font-family: "Verdana", "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+}
+
+.entry-title a:link, .entry-title a:visited {
+	color: #000;
+	text-decoration: underline;
+}
+
+.entry-title a:active, .entry-title a:hover {
+	color: #ff4b33;
+}
+
+/* author info */
+#author-info {
+	background-color: #f2f7fc;
+	border-top: 4px solid #000;
+	clear: both;
+	margin: 24px 0;
+	overflow: hidden;
+	padding: 18px 20px;
+}
+
+#author-info * {
+	font-size: 14px;
+	line-height: 20px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#author-info h2 {
+	color: #000;
+	font-size: 100%;
+	font-weight: bold;
+	margin: 0px;
+}
+
+#author-info #author-description {
+	float: left;
+	margin: 0 0 0 104px;
+}
+
+#author-info #author-avatar {
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	float: left;
+	height: 60px;
+	margin: 0 -104px 0 0;
+	padding: 11px;
+}
+
+/* Изображения, для совместимости с WordPress */
+img.size-full, img.size-large, img.size-medium, .attachment img {
+	max-width: 100%;
+	height: auto;
+}
+
+div.album {
+	margin-top: 32px;
+}
+
+div.album a {
+	margin: 10px;
+	display: inline-block;
+	padding: 0px;
+}
+
+div.album img {
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.7);
+	/*-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);*/
+}
+
+a.album-title {
+	font-weight: bold;
+}
+
+div.block {
+	margin-bottom: 24px;
+}
+
+div.block-body {
+	color: #666;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+div.block-body p {
+	color: #666;
+	font-size: 12px;
+	line-height: 20px;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.block-body ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.block-body ul li {
+	list-style-type: square;
+	margin-left: 16px;
+}
+
+h3.block-title {
+	padding: 0px;
+	margin: 0px;
+	color: #222;
+	font-family: "Verdana", "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	font-size: 14px;
+}
+
+/* Оглавление */
+ul.index {
+	margin: 24px 0px 18px 20px;
+	padding: 0px;
+}
+
+ul.index li {
+	list-style-type: square;
+}
+
+#footer-widgets {
+	margin-bottom: 24px;
+	margin-top: 8px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	font-weight: normal;
+}
