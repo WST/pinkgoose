@@ -38,6 +38,8 @@
 					</div>
 				</div>
 			</div>
+
+			{% block body %}{% endblock %}
 			
 			<div class="end-box"><div><!-- Bottom corners --></div>
 		</div>
