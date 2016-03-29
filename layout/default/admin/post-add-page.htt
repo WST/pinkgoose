@@ -3,5 +3,9 @@
 {% block body %}
 	<h2>{{ title }}</h2>
 
-	<a href="/admin/posts/add">Добавить новый</a>
+	<form method="post">
+		{{ render(form) }}
+		<input type="submit" />
+	</form>
+
 {% endblock %}

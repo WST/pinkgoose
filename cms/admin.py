@@ -5,7 +5,7 @@ from cms import application, db, db_cursor
 from cms.forms import *
 
 # Flask
-from flask import render_template, current_app
+from flask import render_template, current_app, request, redirect
 from flask.ext.login import login_required
 
 # Python
@@ -19,5 +19,13 @@ def admin_main_page():
 @application.route('/admin/posts')
 @login_required
 def admin_posts_page():
+	return render_template('admin/posts-page.htt', title = u'Посты блога')
+
+@application.route('/admin/posts/add', methods = ['GET', 'POST'])
+@login_required
+def admin_post_add_page():
 	form = PostForm()
-	return render_template('admin/posts-page.htt', title = u'Посты блога', form = form)
+	if form.validate_on_submit():
+		pass
+
+	return render_template('admin/post-add-page.htt', title = u'Добавление записи', form = form)
