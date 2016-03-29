@@ -4,7 +4,7 @@
 	</ul>
 	<ul id="rightmenu">
 		{% if current_user.is_authenticated %}
-			<li><a href="{{ hosting_url }}">Панель</a></li>
+			<li><a href="/admin">Панель</a></li>
 			<li><a href="/logout">Выйти ({{ current_user }})</a></li>
 		{% else %}
 			<li><a href="/login" class="invisible">Войти</a></li>

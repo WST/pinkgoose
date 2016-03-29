@@ -1,0 +1,5 @@
+{% extends 'abstract/acp-page.htt' %}
+
+{% block body %}
+	Admin index
+{% endblock %}

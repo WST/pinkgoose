@@ -45,6 +45,7 @@ from cms import classes
 
 # Импортируем наши виды
 from cms import views
+from cms import admin
 
 # Всё, что связано с авторизацией
 from cms import auth

@@ -1,4 +1,9 @@
 
+CREATE TABLE settings (
+	setting VARCHAR(32) NOT NULL DEFAULT '' PRIMARY KEY,
+	value VARCHAR(255) NOT NULL DEFAULT ''
+);
+
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(64),
