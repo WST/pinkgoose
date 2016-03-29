@@ -14,8 +14,8 @@ import psycopg2
 import psycopg2.extras
 
 # Костыль, исправляющий проблему, когда Jinja2 не воспринимает данные как utf-8
-reload(sys)
-sys.setdefaultencoding('utf-8')
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 from config import LAYOUT
 

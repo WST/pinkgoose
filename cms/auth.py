@@ -6,8 +6,8 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 
 # Наше приложение
 from cms import application, login_manager
-from forms import LoginForm
-from classes import User
+from cms.forms import LoginForm
+from cms.classes import User
 
 @application.before_request
 def before_request():
