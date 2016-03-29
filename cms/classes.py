@@ -13,11 +13,11 @@ class User(UserMixin):
 		self.uid = _uid
 		self.username = _username
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.username
 
 	def get_id(self):
-		return unicode(self.uid)
+		return str(self.uid)
 
 	def get_absolute_url(self):
 		return "/users/%d" % self.uid
