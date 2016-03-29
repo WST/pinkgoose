@@ -3,9 +3,5 @@
 {% block body %}
 	<h2>{{ title }}</h2>
 
-	{{ form.hidden_tag() }}
-	{% for field in form if field.widget.input_type != 'hidden' %}
-		{{ field.label }}
-		{{ field }}
-	{% endfor %}
+	{{ render(form) }}
 {% endblock %}

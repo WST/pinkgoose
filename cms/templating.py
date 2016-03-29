@@ -16,9 +16,15 @@ def preprocess_context():
 	site_title = current_app.config['SITE_TITLE']
 	site_slogan = current_app.config['SITE_SLOGAN']
 
+	def visible(field):
+		try:
+			return field.widget.input_type != 'hidden'
+		except:
+			return True
+
 	def render(form):
 		hidden_tag = form.hidden_tag()
-		controls = [str(field) for field in form if field.widget.input_type != 'hidden']
-		return "%s %s" % (hidden_tag, ''.join(controls))
+		widgets = ["<tr><td>%s</td><td>%s</td></tr>" % (field.label(), str(field)) for field in form if visible(field)]
+		return "%s<table border>%s</table>" % (hidden_tag, ''.join(widgets))
 
 	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}
