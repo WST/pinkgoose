@@ -1,5 +1,9 @@
 {% extends 'abstract/acp-page.htt' %}
 
 {% block body %}
-	Admin index
+	<h2>Меню администратора</h2>
+
+	<ul>
+		<li><a href="/admin/posts">Посты в блоге</a></li>
+	</ul>
 {% endblock %}

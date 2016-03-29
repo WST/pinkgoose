@@ -15,4 +15,10 @@ def preprocess_context():
 	footer_message = random.choice(current_app.config['FOOTER_MESSAGES'])
 	site_title = current_app.config['SITE_TITLE']
 	site_slogan = current_app.config['SITE_SLOGAN']
-	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan}
+
+	def render(form):
+		hidden_tag = form.hidden_tag()
+		controls = [str(field) for field in form if field.widget.input_type != 'hidden']
+		return "%s %s" % (hidden_tag, ''.join(controls))
+
+	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}

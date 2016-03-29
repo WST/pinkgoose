@@ -2,9 +2,15 @@
 
 # Flask и WTForms
 from flask.ext.wtf import Form
-from wtforms import TextField, BooleanField, PasswordField
-from wtforms.validators import Required
+from wtforms import TextField, BooleanField, PasswordField, StringField, TextAreaField
+import wtforms.validators as validators
 
 class LoginForm(Form):
-	username = TextField('username', validators = [Required()])
-	password = PasswordField('password')
+	username = StringField('Имя пользователя', validators = [validators.input_required()])
+	password = PasswordField('Пароль')
+
+class PostForm(Form):
+	title = StringField(u'First Name', validators = [validators.input_required()])
+	slug = StringField('URL-имя', validators = [validators.input_required()])
+	intro = TextAreaField(u'Вступление', validators = [validators.input_required()])
+	fulltext = TextAreaField(u'Полный текст', validators = [validators.input_required()])

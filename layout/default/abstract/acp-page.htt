@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Администрирование — {{ title }}</title>
+		{% block head %}
+			<title>Администрирование</title>
+		{% endblock %}		
+		<link rel="stylesheet" type="text/css" href="/static/css/global.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/menu.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/pagination.css" />
+		<style>
+			#instantclick {
+				display: none;
+			}
+		</style>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<h1>{{ title }}</h1>
-		{% block body %}
-			<div>{{ content }}</div>
+		<div id="main-container">
+			<header>
+				<div id="site-title"><a href="/">{{ site_title }}</a></div>
+				<div id="site-subtitle">{{ site_slogan }}</div>
+				<div class="clear-both"></div>
+
+				<div id="header-image">
+					{% block pony %}
+						{% autoescape off %}
+							{{ pony }}
+						{% endautoescape %}
+					{% endblock %}
+				</div>
+
+				{% include 'abstract/menu.htt' %}
+			</header>
+
+			<div id="body-container">
+				{% block body %}
+					<div id="article-container">
+						<article>
+							{% block article %}
+								<h1>Тестовый заголовок</h1>
+							{% endblock %}
+						</article>
+					</div>
+				{% endblock %}
+			
+			</div>
+
+			<div id="sidebar-container">
+				{% for block in blocks %}
+					{% include 'abstract/sidebar-block.htt' %}
+				{% endfor %}
+			</div>
+
+				<div class="clear-both"></div>
+
+			{% include 'abstract/footer.htt' %}
+		</div>
+
+		{% block appendix %}
 		{% endblock %}
 	</body>
 </html>
