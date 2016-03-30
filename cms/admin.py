@@ -19,7 +19,10 @@ def admin_main_page():
 @application.route('/admin/posts')
 @login_required
 def admin_posts_page():
-	return render_template('admin/posts-page.htt', title = u'Посты блога')
+	cur = db_cursor()
+	cur.execute("SELECT * FROM posts ORDER BY published_at DESC")
+	posts = cur.fetchall()
+	return render_template('admin/posts-page.htt', title = u'Посты блога', posts = posts)
 
 @application.route('/admin/posts/add', methods = ['GET', 'POST'])
 @login_required
