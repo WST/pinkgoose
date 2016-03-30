@@ -22,9 +22,15 @@ def preprocess_context():
 		except:
 			return True
 
+	def field_row(field, errors):
+		if field.name in errors:
+			return "<tr class=\"field-error\"><td>%s</td><td>%s</td></tr>" % (field.label(), str(field))
+		else:
+			return "<tr><td>%s</td><td>%s</td></tr>" % (field.label(), str(field))
+
 	def render(form):
 		hidden_tag = form.hidden_tag()
-		widgets = ["<tr><td>%s</td><td>%s</td></tr>" % (field.label(), str(field)) for field in form if visible(field)]
+		widgets = [field_row(field, form.errors) for field in form if visible(field)]
 		return "%s<table border>%s</table>" % (hidden_tag, ''.join(widgets))
 
 	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}
