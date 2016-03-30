@@ -58,16 +58,15 @@
 						</article>
 					</div>
 				{% endblock %}
-			
+
+				<div id="sidebar-container">
+					{% for block in blocks %}
+						{% include 'abstract/sidebar-block.htt' %}
+					{% endfor %}
+				</div>
 			</div>
 
-			<div id="sidebar-container">
-				{% for block in blocks %}
-					{% include 'abstract/sidebar-block.htt' %}
-				{% endfor %}
-			</div>
-
-				<div class="clear-both"></div>
+			<div class="clear-both"></div>
 
 			{% include 'abstract/footer.htt' %}
 		</div>

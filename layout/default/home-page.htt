@@ -1,7 +1,9 @@
 {% extends 'abstract/page.htt' %}
 
-{% block body %}
+{% block article %}
 	{% for post in posts %}
 		<h2>{{ post.title }}</h2>
+	{% else %}
+		<h2>Нет ни одного поста</h2>
 	{% endfor %}
 {% endblock %}

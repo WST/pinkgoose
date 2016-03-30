@@ -1,6 +1,6 @@
 {% extends 'abstract/acp-page.htt' %}
 
-{% block body %}
+{% block article %}
 	<h2>{{ title }}</h2>
 
 	<a href="/admin/posts/add">Добавить новый</a>
