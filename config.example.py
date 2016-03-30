@@ -32,6 +32,10 @@ FOOTER_MESSAGES = [
 PONIES = [
 	'<div style="position: relative; top: -7px; left: 700px; width: 200px; height: 233px; background-image: url(\'/static/ponies/applebloom-1.png\');" id="pony"></div>',
 	'<div style="position: relative; top: -2px; left: 800px; width: 164px; height: 200px; background-image: url(\'/static/ponies/applebloom-2.png\');" id="pony"></div>',
-	'<div style="position: relative; top: -32px; left: 600px; width: 293px; height: 230px; background-image: url(\'/static/ponies/pinkie-1.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -32px; left: 660px; width: 293px; height: 230px; background-image: url(\'/static/ponies/pinkie-1.png\');" id="pony"></div>',
 	'<div style="position: relative; top: -32px; left: 700px; width: 208px; height: 230px; background-image: url(\'/static/ponies/twilight-1.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -11px; left: 600px; width: 174px; height: 242px; background-image: url(\'/static/ponies/dashie-1.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -42px; left: 750px; width: 155px; height: 240px; background-image: url(\'/static/ponies/button-1.png\');" id="pony"></div>',
+	'<div style="position: relative; top: 0px; left: 750px; width: 159px; height: 198px; background-image: url(\'/static/ponies/button-2.png\');" id="pony"></div>',
+	'<div style="position: relative; top: -42px; left: 750px; width: 173px; height: 240px; background-image: url(\'/static/ponies/button-3.png\');" id="pony"></div>',
 ]
