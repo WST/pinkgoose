@@ -25,13 +25,13 @@ def preprocess_context():
 	def field_row(field, errors):
 		if field.name in errors:
 			error = '<br />'.join(errors[field.name])
-			return "<tr class=\"field-error\"><td>%s</td><td>%s<br/>%s</td></tr>" % (field.label(), str(field), error)
+			return "<tr class=\"field-error\"><td width=\"180\">%s</td><td>%s<br/>%s</td></tr>" % (field.label(), str(field), error)
 		else:
 			return "<tr><td>%s</td><td>%s</td></tr>" % (field.label(), str(field))
 
 	def render(form):
 		hidden_tag = form.hidden_tag()
 		widgets = [field_row(field, form.errors) for field in form if visible(field)]
-		return "%s<table border>%s</table>" % (hidden_tag, ''.join(widgets))
+		return "%s<table>%s</table>" % (hidden_tag, ''.join(widgets))
 
 	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}

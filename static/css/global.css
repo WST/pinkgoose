@@ -268,8 +268,34 @@ h1, h2, h3, h4, h5, h6 {
 /* Формы */
 form table {
 	width: 100%;
+	border-collapse: collapse;
+	background-color: #f4f4f4;
+}
+
+form table td {
+	border: 0px none;
+	padding: 4px;
+	vertical-align: top;
 }
 
 form table tr.field-error td label {
 	color: #a00;
+}
+
+form table td input {
+	width: 90%;
+	background-color: #fff;
+	border: 2px solid #999;
+	color: #000;
+	font-size: 15pt;
+	padding: 4px;
+}
+
+form table td textarea {
+	width: 90%;
+	background-color: #fff;
+	border: 2px solid #999;
+	color: #000;
+	font-size: 15pt;
+	padding: 4px;
 }

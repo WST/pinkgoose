@@ -5,6 +5,19 @@ from flask.ext.wtf import Form
 from wtforms import TextField, BooleanField, PasswordField, StringField, TextAreaField
 import wtforms.validators as validators
 
+class MyTranslations(object):
+	def gettext(self, string):
+		messages = {}
+		messages['This field is required.'] = 'Это поле обязательно для заполнения'
+
+		if string in messages:
+			return messages[string]
+		else:
+			return string
+
+	def ngettext(self, singular, plural, n):
+		return "bar"
+
 class LoginForm(Form):
 	username = StringField('Имя пользователя', validators = [validators.input_required()])
 	password = PasswordField('Пароль')
@@ -14,3 +27,9 @@ class PostForm(Form):
 	slug = StringField('URL-имя', validators = [validators.input_required()])
 	intro = TextAreaField(u'Вступление', validators = [validators.input_required()])
 	fulltext = TextAreaField(u'Полный текст', validators = [validators.input_required()])
+
+	def _get_translations(self):
+		return MyTranslations()
+
+	class Meta:
+		locales = ['ru_RU']
