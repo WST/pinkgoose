@@ -4,7 +4,7 @@
 from cms import application, db
 
 # Flask
-from flask import render_template, current_app
+from flask import render_template, url_for
 from flask.ext.login import login_required
 
 # Werkzeug

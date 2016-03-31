@@ -5,7 +5,7 @@ from cms import application, db
 from cms.forms import *
 
 # Flask
-from flask import render_template, current_app, request, redirect
+from flask import render_template, request, redirect, url_for
 from flask.ext.login import login_required
 
 # Python
@@ -45,6 +45,6 @@ def admin_post_add_page():
 			db.rollback()
 
 		# Перенаправление
-		return redirect('/admin/posts')
+		return redirect(url_for('admin_posts_page'))
 
 	return render_template('admin/post-add-page.htt', title = u'Добавление записи', form = form)

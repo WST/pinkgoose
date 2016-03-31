@@ -29,7 +29,7 @@ def preprocess_context():
 	def render(form, submit_caption = 'Сохранить'):
 		hidden_tag = form.hidden_tag()
 		widgets = [field_row(field, form.errors) for field in form if visible(field)]
-		controls = "<div class=\"form-controls\"><button type=\"submit\" class=\"btn\" />%s</button>" % submit_caption
+		controls = "<div class=\"form-controls\"><button type=\"submit\" class=\"btn\" />%s</button></div>" % submit_caption
 		return "<form method=\"post\">%s<table>%s</table>%s</form>" % (hidden_tag, ''.join(widgets), controls)
 
 	def post_url(post):

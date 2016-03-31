@@ -5,8 +5,8 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/global.css" />
 	</head>
 	<body>
-		<h1>{{ title }}</h1>
 		{% block body %}
+			<h1>{{ title }}</h1>
 			<div>{{ content }}</div>
 		{% endblock %}
 	</body>
