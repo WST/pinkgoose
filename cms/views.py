@@ -7,6 +7,9 @@ from cms import application, db
 from flask import render_template, current_app
 from flask.ext.login import login_required
 
+# Werkzeug
+from werkzeug.exceptions import abort
+
 # Python
 import random
 
@@ -21,4 +24,8 @@ def home_page():
 def post_page(post_slug):
 	cur = db.cursor()
 	cur.execute("SELECT * FROM posts WHERE slug = %s", (post_slug,))
-	return render_template('post-page.htt', title = '')
+	if cur.rowcount == 1:
+		post = cur.fetchone()
+		return render_template('post-page.htt', title = '')
+	else:
+		abort(404)
