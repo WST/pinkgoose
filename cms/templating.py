@@ -29,9 +29,10 @@ def preprocess_context():
 		else:
 			return "<tr><td>%s:</td><td>%s</td></tr>" % (field.label(), str(field))
 
-	def render(form):
+	def render(form, submit_caption = 'Сохранить'):
 		hidden_tag = form.hidden_tag()
 		widgets = [field_row(field, form.errors) for field in form if visible(field)]
-		return "%s<table>%s</table>" % (hidden_tag, ''.join(widgets))
+		controls = "<div class=\"form-controls\"><input type=\"submit\" value=\"%s\" /></div>" % submit_caption
+		return "<form method=\"post\">%s<table>%s</table>%s</form>" % (hidden_tag, ''.join(widgets), controls)
 
 	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}
