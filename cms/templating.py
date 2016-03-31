@@ -25,7 +25,7 @@ def preprocess_context():
 	def field_row(field, errors):
 		if field.name in errors:
 			error = '<br />'.join(errors[field.name])
-			return "<tr class=\"field-error\"><td width=\"180\">%s</td><td>%s<br/>%s</td></tr>" % (field.label(), str(field), error)
+			return "<tr class=\"field-error\"><td width=\"180\">%s</td><td>%s<br/><span class=\"field-error\">%s</span></td></tr>" % (field.label(), str(field), error)
 		else:
 			return "<tr><td>%s</td><td>%s</td></tr>" % (field.label(), str(field))
 
