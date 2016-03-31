@@ -32,4 +32,14 @@ def preprocess_context():
 		controls = "<div class=\"form-controls\"><button type=\"submit\" class=\"btn\" />%s</button>" % submit_caption
 		return "<form method=\"post\">%s<table>%s</table>%s</form>" % (hidden_tag, ''.join(widgets), controls)
 
-	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}
+	def post_url(post):
+		return '/posts/%s' % post['slug']
+
+	return {
+		'pony': pony,
+		'footer_message': footer_message,
+		'site_title': site_title,
+		'site_slogan': site_slogan,
+		'render': render,
+		'post_url': post_url,
+	}

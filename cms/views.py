@@ -16,3 +16,9 @@ def home_page():
 	cur.execute("SELECT * FROM posts ORDER BY published_at DESC")
 	posts = cur.fetchall()
 	return render_template('home-page.htt', title = u'Главная страница', posts = posts)
+
+@application.route('/posts/<post_slug>')
+def post_page(post_slug):
+	cur = db.cursor()
+	cur.execute("SELECT * FROM posts WHERE slug = %s", (post_slug,))
+	return render_template('post-page.htt', title = '')
