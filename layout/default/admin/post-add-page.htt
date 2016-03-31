@@ -1,6 +1,6 @@
 {% extends 'abstract/acp-page.htt' %}
 
-{% block article %}
+{% block body %}
 	<h2>{{ title }}</h2>
 
 	<form method="post">

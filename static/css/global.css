@@ -296,6 +296,11 @@ form table td input {
 	box-sizing: border-box;
 }
 
+form table td input:focus {
+	background-color: #ffffce;
+	border: 2px solid #555;
+}
+
 form table td textarea {
 	width: 100%;
 	background-color: #fff;
@@ -304,8 +309,13 @@ form table td textarea {
 	font-size: 15pt;
 	padding: 4px;
 	box-sizing: border-box;
+	height: 180px;
 }
 
+form table td textarea:focus {
+	background-color: #ffffce;
+	border: 2px solid #555;
+}
 span.field-error {
 	color: #a00;
 	font-size: 9pt;
