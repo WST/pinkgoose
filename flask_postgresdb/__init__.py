@@ -44,3 +44,12 @@ class PostgreSQL(object):
 		ctx = _app_ctx_stack.top
 		if hasattr(ctx, 'pg_db'):
 			ctx.pg_db.close()
+
+	def commit(self):
+		return self.connection.commit()
+
+	def rollback(self):
+		return self.connection.rollback()
+
+	def cursor(self):
+		return self.connection.cursor(cursor_factory = psycopg2.extras.DictCursor)

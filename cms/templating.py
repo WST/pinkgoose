@@ -3,18 +3,15 @@
 # Наше приложение
 from cms import application
 
-# Flask
-from flask import current_app
-
 # Python
 import random
 
 @application.context_processor
 def preprocess_context():
-	pony = random.choice(current_app.config['PONIES'])
-	footer_message = random.choice(current_app.config['FOOTER_MESSAGES'])
-	site_title = current_app.config['SITE_TITLE']
-	site_slogan = current_app.config['SITE_SLOGAN']
+	pony = random.choice(application.config['PONIES'])
+	footer_message = random.choice(application.config['FOOTER_MESSAGES'])
+	site_title = application.config['SITE_TITLE']
+	site_slogan = application.config['SITE_SLOGAN']
 
 	def visible(field):
 		try:
@@ -32,7 +29,7 @@ def preprocess_context():
 	def render(form, submit_caption = 'Сохранить'):
 		hidden_tag = form.hidden_tag()
 		widgets = [field_row(field, form.errors) for field in form if visible(field)]
-		controls = "<div class=\"form-controls\"><input type=\"submit\" value=\"%s\" /></div>" % submit_caption
+		controls = "<div class=\"form-controls\"><button type=\"submit\" class=\"btn\" />%s</button>" % submit_caption
 		return "<form method=\"post\">%s<table>%s</table>%s</form>" % (hidden_tag, ''.join(widgets), controls)
 
 	return {'pony': pony, 'footer_message': footer_message, 'site_title': site_title, 'site_slogan': site_slogan, 'render': render}

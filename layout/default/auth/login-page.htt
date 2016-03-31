@@ -1,8 +1,9 @@
 {% extends 'abstract/simple-page.htt' %}
 
 {% block body %}
-	<form action="/login" method="post">
-		{{ render(form) }}
-		<p><input type="submit" value="Sign In"></p>
-	</form>
+	<div id="main-container">
+		<div id="body-container">
+			{{ render(form, "Войти") }}
+		</div>
+	</div>
 {% endblock %}

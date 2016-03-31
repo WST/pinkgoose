@@ -31,9 +31,6 @@ application.config.from_object('config')
 # Подключение к СУБД PostgreSQL
 db = PostgreSQL(application)
 
-def db_cursor():
-	return db.connection.cursor(cursor_factory = psycopg2.extras.DictCursor)
-
 # Менеджер авторизаций
 login_manager = LoginManager()
 login_manager.init_app(application)
