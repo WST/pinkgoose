@@ -27,7 +27,7 @@ def preprocess_context():
 			error = '<br />'.join(errors[field.name])
 			return "<tr class=\"field-error\"><td width=\"180\">%s</td><td>%s<br/><span class=\"field-error\">%s</span></td></tr>" % (field.label(), str(field), error)
 		else:
-			return "<tr><td>%s</td><td>%s</td></tr>" % (field.label(), str(field))
+			return "<tr><td>%s:</td><td>%s</td></tr>" % (field.label(), str(field))
 
 	def render(form):
 		hidden_tag = form.hidden_tag()
