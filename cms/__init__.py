@@ -1,48 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Flask
-from flask import Flask
-from flask.ext.postgresdb import PostgreSQL
-from flask.ext.login import LoginManager
+from cms import site
 
-# Python
-import os
-import sys
+site = site.Site()
 
-# psycopg2
-import psycopg2
-import psycopg2.extras
-
-# Костыль, исправляющий проблему, когда Jinja2 не воспринимает данные как utf-8
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
-
-from config import LAYOUT
-
-# Некоторые пути
-CMS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_ROOT = os.path.join(CMS_ROOT, 'layout/' + LAYOUT)
-STATIC_ROOT = os.path.join(CMS_ROOT, 'static')
-
-# Создаём приложение и загружаем конфиг
-application = Flask(__name__, template_folder = TEMPLATE_ROOT, static_folder = STATIC_ROOT)
-application.config.from_object('config')
-
-# Подключение к СУБД PostgreSQL
-db = PostgreSQL(application)
-
-# Менеджер авторизаций
-login_manager = LoginManager()
-login_manager.init_app(application)
-
-from cms import templating
-
-# Импортируем класс пользователя и другие
-from cms import classes
-
-# Импортируем наши виды
-from cms import views
-from cms import admin
-
-# Всё, что связано с авторизацией
-from cms import auth
+from cms import templating, classes, views, admin, auth

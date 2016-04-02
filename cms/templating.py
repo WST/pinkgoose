@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
 # Наше приложение
-from cms import application
+from cms import site
 
 # Python
 import random
 
-@application.context_processor
+@site.application.context_processor
 def preprocess_context():
-	pony = random.choice(application.config['PONIES'])
-	footer_message = random.choice(application.config['FOOTER_MESSAGES'])
-	site_title = application.config['SITE_TITLE']
-	site_slogan = application.config['SITE_SLOGAN']
+	pony = random.choice(site.application.config['PONIES'])
+	footer_message = random.choice(site.application.config['FOOTER_MESSAGES'])
+	site_title = site.application.config['SITE_TITLE']
+	site_slogan = site.application.config['SITE_SLOGAN']
 
 	def visible(field):
 		try:

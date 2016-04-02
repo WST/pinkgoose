@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Наше приложение
-from cms import application, db
+from cms import site
 from cms.forms import *
 
 # Flask
@@ -12,20 +12,20 @@ from flask.ext.login import login_required
 import random
 import time
 
-@application.route('/admin')
+@site.application.route('/admin')
 @login_required
 def admin_main_page():
 	return render_template('admin/main-page.htt', title = u'Администрирование')
 
-@application.route('/admin/posts')
+@site.application.route('/admin/posts')
 @login_required
 def admin_posts_page():
-	cur = db.cursor()
+	cur = site.db.cursor()
 	cur.execute("SELECT * FROM posts ORDER BY published_at DESC")
 	posts = cur.fetchall()
 	return render_template('admin/posts-page.htt', title = u'Посты блога', posts = posts)
 
-@application.route('/admin/posts/add', methods = ['GET', 'POST'])
+@site.application.route('/admin/posts/add', methods = ['GET', 'POST'])
 @login_required
 def admin_post_add_page():
 	form = PostForm()
@@ -38,7 +38,7 @@ def admin_post_add_page():
 		data = (title, slug, intro, fulltext, 1)
 		
 		try:
-			cur = db.cursor()
+			cur = site.db.cursor()
 			cur.execute("INSERT INTO posts (title, slug, intro, fulltext, published, published_at, author_id) VALUES (%s, %s, %s, %s, TRUE, EXTRACT(EPOCH FROM NOW()), %s)", data);
 			db.commit()
 		except:

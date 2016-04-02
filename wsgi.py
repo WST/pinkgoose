@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from cms import application
+from cms import site
 
 if __name__ == "__main__":
-	application.run()
+	site.application.run()
