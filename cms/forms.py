@@ -5,11 +5,11 @@ from flask.ext.wtf import Form
 from wtforms import TextField, BooleanField, PasswordField, StringField, TextAreaField
 import wtforms.validators as validators
 
-class PinkGooseForm(Form):
+class CirnoForm(Form):
 	def _get_translations(self):
-		return MyTranslations()
+		return CirnoFormTranslations()
 
-class MyTranslations(object):
+class CirnoFormTranslations(object):
 	def gettext(self, string):
 		messages = {}
 		messages['This field is required.'] = 'Это поле обязательно для заполнения'
@@ -22,11 +22,11 @@ class MyTranslations(object):
 	def ngettext(self, singular, plural, n):
 		return "bar"
 
-class LoginForm(PinkGooseForm):
+class LoginForm(CirnoForm):
 	username = StringField('Имя пользователя', validators = [validators.input_required()])
 	password = PasswordField('Пароль')
 
-class PostForm(PinkGooseForm):
+class PostForm(CirnoForm):
 	title = StringField(u'Заголовок', validators = [validators.input_required()])
 	slug = StringField('URL-имя', validators = [validators.input_required()])
 	intro = TextAreaField(u'Вступление', validators = [validators.input_required()])
