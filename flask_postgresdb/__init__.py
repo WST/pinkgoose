@@ -6,8 +6,10 @@ import psycopg2
 # Flask
 from flask import _app_ctx_stack, current_app
 
+# NOTE: http://flask.pocoo.org/docs/0.10/extensiondev/
+
 class PostgreSQL(object):
-	def __init__(self, app=None):
+	def __init__(self, app = None):
 		self.app = app
 		if app is not None:
 			self.init_app(app)
@@ -32,6 +34,10 @@ class PostgreSQL(object):
 
 		return psycopg2.connect(**kwargs)
 
+	def standalone_connection(self):
+		from config import PG_HOST, PG_DATABASE, PG_USER, PG_PASSWORD
+		return psycopg2.connect(host = PG_HOST, database = PG_DATABASE, user = PG_USER, password = PG_PASSWORD)
+
 	@property
 	def connection(self):
 		ctx = _app_ctx_stack.top
@@ -39,6 +45,8 @@ class PostgreSQL(object):
 			if not hasattr(ctx, 'pg_db'):
 				ctx.pg_db = self.connect
 			return ctx.pg_db
+		#else:
+		#	return self.connect
 
 	def teardown(self, exception):
 		ctx = _app_ctx_stack.top
