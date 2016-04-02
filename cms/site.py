@@ -8,10 +8,6 @@ from flask.ext.login import LoginManager
 # Python
 import os, sys, importlib
 
-# psycopg2
-import psycopg2
-import psycopg2.extras
-
 # config
 from config import LAYOUT
 

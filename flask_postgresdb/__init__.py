@@ -2,6 +2,7 @@
 
 # psycopg2
 import psycopg2
+import psycopg2.extras
 
 # Flask
 from flask import _app_ctx_stack, current_app
