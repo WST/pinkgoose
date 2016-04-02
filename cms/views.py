@@ -15,17 +15,17 @@ import random
 
 @site.application.route('/')
 def home_page():
-	cur = site.db.cursor()
-	cur.execute("SELECT * FROM posts ORDER BY published_at DESC")
-	posts = cur.fetchall()
+	cursor = site.db.cursor()
+	cursor.execute("SELECT * FROM posts ORDER BY published_at DESC")
+	posts = cursor.fetchall()
 	return render_template('home-page.htt', title = u'Главная страница', posts = posts)
 
 @site.application.route('/posts/<post_slug>')
 def post_page(post_slug):
-	cur = site.db.cursor()
-	cur.execute("SELECT * FROM posts WHERE slug = %s", (post_slug,))
-	if cur.rowcount == 1:
-		post = cur.fetchone()
+	cursor = site.db.cursor()
+	cursor.execute("SELECT * FROM posts WHERE slug = %s", (post_slug,))
+	if cursor.rowcount == 1:
+		post = cursor.fetchone()
 		return render_template('post-page.htt', title = '')
 	else:
 		abort(404)

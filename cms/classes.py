@@ -24,9 +24,9 @@ class User(UserMixin):
 
 	@staticmethod
 	def authenticate(username, password):
-		cur = site.db.connection.cursor()
-		cur.execute("SELECT id, username FROM users WHERE username = %s AND password = MD5(%s)", (username, password))
-		row = cur.fetchone()
+		cursor = site.db.connection.cursor()
+		cursor.execute("SELECT id, username FROM users WHERE username = %s AND password = MD5(%s)", (username, password))
+		row = cursor.fetchone()
 		if row is None:
 			return None
 		else:
@@ -35,9 +35,9 @@ class User(UserMixin):
 
 	@staticmethod
 	def get(user_id):
-		cur = site.db.connection.cursor()
-		cur.execute("SELECT id, username FROM users WHERE id = %s", (int(user_id),))
-		row = cur.fetchone()
+		cursor = site.db.connection.cursor()
+		cursor.execute("SELECT id, username FROM users WHERE id = %s", (int(user_id),))
+		row = cursor.fetchone()
 		user = User(int(row[0]), row[1])
 		return user
 

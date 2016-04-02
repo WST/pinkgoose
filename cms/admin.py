@@ -20,9 +20,9 @@ def admin_main_page():
 @site.application.route('/admin/posts')
 @login_required
 def admin_posts_page():
-	cur = site.db.cursor()
-	cur.execute("SELECT * FROM posts ORDER BY published_at DESC")
-	posts = cur.fetchall()
+	cursor = site.db.cursor()
+	cursor.execute("SELECT * FROM posts ORDER BY published_at DESC")
+	posts = cursor.fetchall()
 	return render_template('admin/posts-page.htt', title = u'Посты блога', posts = posts)
 
 @site.application.route('/admin/posts/add', methods = ['GET', 'POST'])
@@ -38,8 +38,8 @@ def admin_post_add_page():
 		data = (title, slug, intro, fulltext, 1)
 		
 		try:
-			cur = site.db.cursor()
-			cur.execute("INSERT INTO posts (title, slug, intro, fulltext, published, published_at, author_id) VALUES (%s, %s, %s, %s, TRUE, EXTRACT(EPOCH FROM NOW()), %s)", data);
+			cursor = site.db.cursor()
+			cursor.execute("INSERT INTO posts (title, slug, intro, fulltext, published, published_at, author_id) VALUES (%s, %s, %s, %s, TRUE, EXTRACT(EPOCH FROM NOW()), %s)", data);
 			db.commit()
 		except:
 			db.rollback()

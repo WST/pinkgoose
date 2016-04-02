@@ -46,8 +46,6 @@ class PostgreSQL(object):
 			if not hasattr(ctx, 'pg_db'):
 				ctx.pg_db = self.connect
 			return ctx.pg_db
-		#else:
-		#	return self.connect
 
 	def teardown(self, exception):
 		ctx = _app_ctx_stack.top

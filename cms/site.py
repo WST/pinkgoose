@@ -15,8 +15,14 @@ from config import LAYOUT
 CMS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_ROOT = os.path.join(CMS_ROOT, 'layout/' + LAYOUT)
 STATIC_ROOT = os.path.join(CMS_ROOT, 'static')
+PLUGIN_ROOT = os.path.join(CMS_ROOT, 'plugins')
+
+importlib.invalidate_caches()
+sys.path.append(PLUGIN_ROOT)
 
 class Site:
+	plugins = {}
+
 	def __init__(self):
 		self.application = Flask(__name__, template_folder = TEMPLATE_ROOT, static_folder = STATIC_ROOT)
 		self.application.config.from_object('config')
@@ -32,8 +38,9 @@ class Site:
 
 	def initialize_module(self, module_row):
 		try:
-			module = importlib.import_module('module', module_row['name'])
-			module.start(self)
+			module = importlib.import_module('%s.plugin' % module_row['name'])
+			plugin = module.CirnoPlugin(self)
+			self.plugins[module_row['name']] = plugin
 		except Exception as e:
 			print(str(e))
 
@@ -41,5 +48,5 @@ class Site:
 		cursor = self.db.cursor()
 		cursor.execute("SELECT * FROM modules WHERE enabled = TRUE")
 		modules = cursor.fetchall()
-		map(self.initialize_module, modules)
-		db.close()
+		for module in modules:
+			self.initialize_module(module)
