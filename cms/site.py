@@ -20,7 +20,7 @@ from config import LAYOUT
 # Некоторые пути
 CMS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_ROOT = os.path.join(CMS_ROOT, 'layout/' + LAYOUT)
-STATIC_ROOT = os.path.join(CMS_ROOT, 'static')
+STATIC_ROOT = os.path.join(TEMPLATE_ROOT, 'static')
 PLUGIN_ROOT = os.path.join(CMS_ROOT, 'plugins')
 
 importlib.invalidate_caches()
