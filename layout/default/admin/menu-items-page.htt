@@ -1,0 +1,13 @@
+{% extends 'abstract/acp-page.htt' %}
+
+{% block article %}
+	<h2>{{ title }}</h2>
+
+	<ul>
+		{% for item in items %}
+			<li>{{ item.title }}</li>
+		{% endfor %}
+	</ul>
+
+	<a href="/admin/menu-items/add">Добавить новую страницу</a>
+{% endblock %}

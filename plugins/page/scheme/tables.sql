@@ -1,0 +1,10 @@
+
+CREATE TABLE pages (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(255) NOT NULL DEFAULT '',
+	published BOOL NOT NULL DEFAULT false,
+	published_at BIGINT NOT NULL DEFAULT 0,
+	intro TEXT NOT NULL,
+	fulltext TEXT NOT NULL,
+	author_id INTEGER NOT NULL DEFAULT 0
+);

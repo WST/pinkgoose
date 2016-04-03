@@ -54,3 +54,11 @@ def admin_post_add_page():
 		return redirect(url_for('admin_posts_page'))
 
 	return render_template('admin/post-add-page.htt', title = u'Добавление записи', form = form)
+
+@site.application.route('/admin/menu-items')
+@login_required
+def admin_menu_items_page():
+	cursor = site.db.cursor()
+	cursor.execute("SELECT * FROM menu_items")
+	items = cursor.fetchall()
+	return render_template('admin/menu-items-page.htt', title = u'Элементы меню', items = items)
