@@ -42,4 +42,5 @@ def preprocess_context():
 		'site_slogan': site_slogan,
 		'render': render,
 		'post_url': post_url,
+		'menu': site.structure,
 	}

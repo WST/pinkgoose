@@ -22,6 +22,7 @@ sys.path.append(PLUGIN_ROOT)
 
 class Site:
 	plugins = {}
+	structure = []
 
 	def __init__(self):
 		self.application = Flask(__name__, template_folder = TEMPLATE_ROOT, static_folder = STATIC_ROOT)
@@ -31,6 +32,17 @@ class Site:
 
 		with self.application.app_context():
 			self.initialize_modules()
+			self.load_menu()
+
+	def load_menu(self):
+		cursor = self.db.cursor()
+		cursor.execute("SELECT * FROM menu_items")
+		menu_items = cursor.fetchall()
+		self.process_structure(menu_items)
+
+	def process_structure(self, structure):
+		for row in structure:
+			self.structure += [{'title': row['title'], 'url': row['url'], 'tooltip': row['tooltip']}]
 
 	def initialize_login_manager(self):
 		self.login_manager = LoginManager()

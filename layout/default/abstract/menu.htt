@@ -1,6 +1,9 @@
 <menu>
 	<ul>
-		<li><a href="/">Блог</a></li>
+		<li><a href="/" title="Главная страница">Блог</a></li>
+		{% for item in menu %}
+			<li><a href="{{ item.url }}" title="{{ item.tooltip }}">{{ item.title }}</a></li>
+		{% endfor %}
 	</ul>
 	<ul id="rightmenu">
 		{% if current_user.is_authenticated %}

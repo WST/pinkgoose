@@ -3,4 +3,8 @@
 from cms.plugins import AbstractCirnoPlugin
 
 class CirnoPlugin(AbstractCirnoPlugin):
-	pass
+	def install(self):
+		pass
+
+	def uninstall(self):
+		pass
