@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+# Cirno
 from cms.plugins import AbstractCirnoPlugin
+
+# Flask
+from flask import render_template, url_for
 
 class CirnoPlugin(AbstractCirnoPlugin):
 	def install(self):
@@ -10,4 +14,4 @@ class CirnoPlugin(AbstractCirnoPlugin):
 		pass
 
 	def menu_item(self, request, item):
-		return 'foo'
+		return render_template('static-page.htt', title = '')

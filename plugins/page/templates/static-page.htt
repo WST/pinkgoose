@@ -1,0 +1,5 @@
+{% extends 'abstract/page.htt' %}
+
+{% block article %}
+	<h2>Статическая страница</h2>
+{% endblock %}

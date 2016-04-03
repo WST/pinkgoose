@@ -5,6 +5,9 @@ from flask import Flask, request
 from flask.ext.postgresdb import PostgreSQL
 from flask.ext.login import LoginManager
 
+# Jinja2
+import jinja2
+
 # Python
 import os, sys, importlib
 
@@ -35,8 +38,15 @@ class Site:
 
 		with self.application.app_context():
 			self.initialize_plugins()
+			self.setup_template_loader()
 			self.load_menu()
 			self.setup_urls()
+
+	def setup_template_loader(self):
+		# http://reliablybroken.com/b/2012/05/custom-template-folders-with-flask/
+		dirs = [os.path.join(PLUGIN_ROOT, i, 'templates') for i in self.plugins.keys()]
+		loader = jinja2.ChoiceLoader([self.application.jinja_loader, jinja2.FileSystemLoader(dirs)])
+		self.application.jinja_loader = loader
 
 	def load_menu(self):
 		self.structure = []
@@ -67,9 +77,6 @@ class Site:
 		plugins = cursor.fetchall()
 		for plugin in plugins:
 			self.initialize_plugin(plugin)
-
-	def pattern_name(self, url_pattern):
-		return url_pattern
 
 	def menu_item_by_path(self, path):
 		for item in self.structure:
