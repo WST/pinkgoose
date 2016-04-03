@@ -8,3 +8,6 @@ class CirnoPlugin(AbstractCirnoPlugin):
 
 	def uninstall(self):
 		pass
+
+	def handle_request(self):
+		pass

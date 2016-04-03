@@ -31,34 +31,46 @@ class Site:
 		self.initialize_login_manager()
 
 		with self.application.app_context():
-			self.initialize_modules()
+			self.initialize_plugins()
 			self.load_menu()
+			self.setup_urls()
 
 	def load_menu(self):
+		self.structure = []
 		cursor = self.db.cursor()
-		cursor.execute("SELECT * FROM menu_items")
+		cursor.execute("SELECT i.id AS id, i.parent AS parent, i.url AS url, i.title AS title, i.tooltip AS tooltip, p.name AS plugin FROM menu_items AS i JOIN plugins AS p ON i.plugin = p.id WHERE i.enabled = TRUE and p.enabled = TRUE")
 		menu_items = cursor.fetchall()
 		self.process_structure(menu_items)
 
 	def process_structure(self, structure):
 		for row in structure:
-			self.structure += [{'title': row['title'], 'url': row['url'], 'tooltip': row['tooltip']}]
+			self.structure += [row]
 
 	def initialize_login_manager(self):
 		self.login_manager = LoginManager()
 		self.login_manager.init_app(self.application)
 
-	def initialize_module(self, module_row):
+	def initialize_plugin(self, plugin_row):
 		try:
-			module = importlib.import_module('%s.plugin' % module_row['name'])
+			module = importlib.import_module('%s.plugin' % plugin_row['name'])
 			plugin = module.CirnoPlugin(self)
-			self.plugins[module_row['name']] = plugin
+			self.plugins[plugin_row['name']] = plugin
 		except Exception as e:
 			print(str(e))
 
-	def initialize_modules(self):
+	def initialize_plugins(self):
 		cursor = self.db.cursor()
-		cursor.execute("SELECT * FROM modules WHERE enabled = TRUE")
-		modules = cursor.fetchall()
-		for module in modules:
-			self.initialize_module(module)
+		cursor.execute("SELECT * FROM plugins WHERE enabled = TRUE")
+		plugins = cursor.fetchall()
+		for plugin in plugins:
+			self.initialize_plugin(plugin)
+
+	def pattern_name(self, url_pattern):
+		return url_pattern
+
+	def setup_urls(self):
+		for item in self.structure:
+			try:
+				self.application.add_url_rule(item['url'], self.pattern_name(item['url']), self.plugins[item['plugin']].handle_request)
+			except Exception as e:
+				print(str(e))
