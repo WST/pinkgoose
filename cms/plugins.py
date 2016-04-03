@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from cms import site
+
 class AbstractCirnoPlugin:
 	def __init__(self, site):
 		self.site = site

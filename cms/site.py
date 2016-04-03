@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 
 # Flask
-from flask import Flask
+from flask import Flask, request
 from flask.ext.postgresdb import PostgreSQL
 from flask.ext.login import LoginManager
 
 # Python
 import os, sys, importlib
+
+# Werkzeug
+from werkzeug.exceptions import abort
 
 # config
 from config import LAYOUT
@@ -68,9 +71,18 @@ class Site:
 	def pattern_name(self, url_pattern):
 		return url_pattern
 
-	def setup_urls(self):
+	def menu_item_by_path(self, path):
 		for item in self.structure:
-			try:
-				self.application.add_url_rule(item['url'], self.pattern_name(item['url']), self.plugins[item['plugin']].handle_request)
-			except Exception as e:
-				print(str(e))
+			if item['url'] == path:
+				return item
+		return None
+
+	def handle_menu_item(self, error):
+		item = self.menu_item_by_path(request.path)
+		if item is None:
+			return 'Not Found', 404
+		else:
+			return self.plugins[item['plugin']].menu_item(request, item)
+
+	def setup_urls(self):
+		self.application.error_handler_spec[None][404] = self.handle_menu_item

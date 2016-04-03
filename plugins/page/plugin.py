@@ -9,5 +9,5 @@ class CirnoPlugin(AbstractCirnoPlugin):
 	def uninstall(self):
 		pass
 
-	def handle_request(self):
-		pass
+	def menu_item(self, request, item):
+		return 'foo'
