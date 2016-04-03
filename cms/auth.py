@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+#------------------------------------------#
+# Этот файл является частью CMS Cirno v9.0 #
+# © 2016 https://github.com/WST            #
+# Распространяется на условиях MIT License #
+#-------------------------------------------
+
 # Flask
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, redirect, session, url_for, request, g

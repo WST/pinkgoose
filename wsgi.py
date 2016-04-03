@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#------------------------------------------#
+# Этот файл является частью CMS Cirno v9.0 #
+# © 2016 https://github.com/WST            #
+# Распространяется на условиях MIT License #
+#-------------------------------------------
+
 import sys
 
 from cms import site

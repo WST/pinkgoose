@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+#------------------------------------------#
+# Этот файл является частью CMS Cirno v9.0 #
+# © 2016 https://github.com/WST            #
+# Распространяется на условиях MIT License #
+#-------------------------------------------
+
 # Flask
 CSRF_ENABLED = True
 SECRET_KEY = 'n2NXnies98enr9s'
