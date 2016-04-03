@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Flask
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask.ext.postgresdb import PostgreSQL
 from flask.ext.login import LoginManager
 
@@ -87,7 +87,7 @@ class Site:
 	def handle_menu_item(self, error):
 		item = self.menu_item_by_path(request.path)
 		if item is None:
-			return 'Not Found', 404
+			return render_template('404-page.htt'), 404
 		else:
 			return self.plugins[item['plugin']].menu_item(request, item)
 

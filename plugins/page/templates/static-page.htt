@@ -2,4 +2,6 @@
 
 {% block article %}
 	<h2>Статическая страница</h2>
+
+	{{ item.id }}
 {% endblock %}

@@ -14,4 +14,4 @@ class CirnoPlugin(AbstractCirnoPlugin):
 		pass
 
 	def menu_item(self, request, item):
-		return render_template('static-page.htt', title = '')
+		return render_template('static-page.htt', title = '', item = item)

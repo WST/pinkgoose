@@ -1,0 +1,10 @@
+{% extends 'abstract/simple-page.htt' %}
+
+{% block body %}
+	<div id="main-container" style="background-image: url('/static/img/cirno.png'); background-repeat: no-repeat; background-position: 95% 100%;">
+		<div id="body-container">
+			<h1>Страница не найдена</h1>
+			<p>Запрошенному URL не соответствует ни одна страница.<br/><a href="/">Перейти к главной странице</a></p>
+		</div>
+	</div>
+{% endblock %}
