@@ -59,11 +59,17 @@ class Site:
 		cursor = self.db.cursor()
 		cursor.execute("SELECT i.id AS id, i.parent AS parent, i.url AS url, i.title AS title, i.tooltip AS tooltip, p.name AS plugin FROM menu_items AS i JOIN plugins AS p ON i.plugin = p.id WHERE i.enabled = TRUE and p.enabled = TRUE")
 		menu_items = cursor.fetchall()
-		self.process_structure(menu_items)
+		self.structure = self.process_structure(menu_items)
+		print(self.structure)
 
-	def process_structure(self, structure):
-		for row in structure:
-			self.structure += [row]
+	def process_structure(self, menu_items, parent = 0, level = 0):
+		items = [dict(i) for i in menu_items if int(i['parent']) == int(parent)]
+
+		for item in items:
+			children = self.process_structure(menu_items, item['id'], level + 1)
+			item['children'] = children
+
+		return items
 
 	def initialize_login_manager(self):
 		self.login_manager = LoginManager()
