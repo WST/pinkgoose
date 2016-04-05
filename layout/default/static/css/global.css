@@ -1,6 +1,6 @@
 body {
 	background-color: #c1e8c4;
-	background-image: url('/static/img/background.png');
+	/*background-image: url('/static/img/background.png');*/
 }
 
 ::selection {
