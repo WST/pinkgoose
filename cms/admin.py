@@ -62,3 +62,10 @@ def admin_menu_items_page():
 	cursor.execute("SELECT * FROM menu_items")
 	items = cursor.fetchall()
 	return render_template('admin/menu-items-page.htt', title = u'Элементы меню', items = items)
+
+@site.application.route('/admin/menu-items/<int:item_id>')
+@login_required
+def admin_menu_item_page(item_id):
+	#cursor = site.db.cursor()
+	#cursor.execute("SELECT * FROM menu_items WHERE id = %s", (item_id,))
+	return render_template('admin/menu-item-page.htt', title = u'Редактирование элемента меню')

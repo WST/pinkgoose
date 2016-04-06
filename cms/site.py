@@ -55,7 +55,7 @@ class Site:
 		self.application.jinja_loader = loader
 
 	def load_menu(self):
-		self.structure = [{'title': 'Блог', 'url': '/', 'tooltip': 'Главная страница'}]
+		self.structure = [{'title': 'Блог', 'url': '/', 'tooltip': 'Главная страница', 'id': '0'}]
 		cursor = self.db.cursor()
 		cursor.execute("SELECT i.id AS id, i.parent AS parent, i.url AS url, i.title AS title, i.tooltip AS tooltip, p.name AS plugin FROM menu_items AS i JOIN plugins AS p ON i.plugin = p.id WHERE i.enabled = TRUE and p.enabled = TRUE")
 		menu_items = cursor.fetchall()

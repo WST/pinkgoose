@@ -3,11 +3,7 @@
 {% block article %}
 	<h2>{{ title }}</h2>
 
-	<ul>
-		{% for item in items %}
-			<li>{{ item.title }}</li>
-		{% endfor %}
-	</ul>
+	{{ render_menu_admin(menu) }}
 
 	<a href="/admin/menu-items/add">Добавить новую страницу</a>
 {% endblock %}

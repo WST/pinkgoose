@@ -52,6 +52,17 @@ def preprocess_context():
 		result += '</ul>'
 		return result
 
+	def render_menu_admin(menu):
+		result = '<ul>'
+		for item in menu:
+			if 'children' in item and len(item['children']) > 0:
+				result += "<li><a href=\"/admin/menu-items/%d\" title=\"%s\">%s</a>%s</li>" % (int(item['id']), item['tooltip'], item['title'], render_menu_admin(item['children']))
+			else:
+				result += "<li><a href=\"/admin/menu-items/%d\" title=\"%s\">%s</a></li>" % (int(item['id']), item['tooltip'], item['title'])
+
+		result += '</ul>'
+		return result
+
 	return {
 		'pony': pony,
 		'footer_message': footer_message,
@@ -61,4 +72,5 @@ def preprocess_context():
 		'post_url': post_url,
 		'menu': site.structure,
 		'render_menu': render_menu,
+		'render_menu_admin': render_menu_admin,
 	}
