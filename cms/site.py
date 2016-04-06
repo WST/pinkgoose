@@ -55,11 +55,11 @@ class Site:
 		self.application.jinja_loader = loader
 
 	def load_menu(self):
-		self.structure = []
+		self.structure = [{'title': 'Блог', 'url': '/', 'tooltip': 'Главная страница'}]
 		cursor = self.db.cursor()
 		cursor.execute("SELECT i.id AS id, i.parent AS parent, i.url AS url, i.title AS title, i.tooltip AS tooltip, p.name AS plugin FROM menu_items AS i JOIN plugins AS p ON i.plugin = p.id WHERE i.enabled = TRUE and p.enabled = TRUE")
 		menu_items = cursor.fetchall()
-		self.structure = self.process_structure(menu_items)
+		self.structure += self.process_structure(menu_items)
 
 	def process_structure(self, menu_items, parent = 0, level = 0):
 		items = [dict(i) for i in menu_items if int(i['parent']) == int(parent)]
