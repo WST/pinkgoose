@@ -37,3 +37,7 @@ class PostForm(CirnoForm):
 	slug = StringField('URL-имя', validators = [validators.input_required()])
 	intro = TextAreaField(u'Вступление', validators = [validators.input_required()])
 	fulltext = TextAreaField(u'Полный текст', validators = [validators.input_required()])
+
+class MenuItemForm(CirnoForm):
+	title = StringField('Заголовок', validators = [validators.input_required()])
+	tooltip = StringField('Подсказка')
